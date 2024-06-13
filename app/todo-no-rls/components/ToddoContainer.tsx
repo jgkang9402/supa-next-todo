@@ -17,7 +17,7 @@ const TodoContainer = () => {
     <div>
       <TodoList
         sharedUserFullName="test user"
-        owerUserId="123123"
+        ownerUserId="123123"
         loading={loading}
         todoListData={todos}
         isReadOnly={false}

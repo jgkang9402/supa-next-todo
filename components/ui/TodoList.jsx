@@ -7,7 +7,7 @@ import TodoListItem from "./TodoListItem";
 
 const TodoList = ({
   sharedUserFullName = "",
-  owerUserId = "",
+  ownerUserId = "",
   loading = false,
   todoListData = [],
   isReadOnly = false,
@@ -20,7 +20,7 @@ const TodoList = ({
   const [copiedText, copy] = useCopyToClipboard();
 
   const handleCopy = () => {
-    const shareLink = `${"todoList공유할 링크"}/share/${owerUserId}`;
+    const shareLink = `${"todoList공유할 링크"}/share/${ownerUserId}`;
     copy(shareLink)
       .then(() => {
         window.alert(`공유링크 복사완료! \n${shareLink}`);
@@ -43,7 +43,7 @@ const TodoList = ({
             {sharedUserFullName && <div>{sharedUserFullName}</div>}
             Things to do:
           </div>
-          {owerUserId && (
+          {ownerUserId && (
             <div
               onClick={() => handleCopy()}
               className="font-bold text-[20px] flex flex-row items-center

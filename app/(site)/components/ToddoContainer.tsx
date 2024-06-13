@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import useTodosController from "../hooks/useTodosController";
 import TodoList from "@/components/ui/TodoList";
 
-const TodoContainer = () => {
+const TodoContainer = ({ ownerUserId }) => {
   const {
     loading,
     todos,
@@ -17,7 +17,7 @@ const TodoContainer = () => {
     <div>
       <TodoList
         sharedUserFullName="test user"
-        owerUserId="123123"
+        ownerUserId="123123"
         loading={loading}
         todoListData={todos}
         isReadOnly={false}
