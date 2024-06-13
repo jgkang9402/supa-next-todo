@@ -21,7 +21,7 @@ const TodoList = ({
   const [copiedText, copy] = useCopyToClipboard();
 
   const handleCopy = () => {
-    const shareLink = `${process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO_HOME}/share/${ownerUserId}`;
+    const shareLink = `${process.env.NEXT_PUBLIC_CLIENT_URL}/share/${ownerUserId}`;
     copy(shareLink)
       .then(() => {
         window.alert(`공유링크 복사완료! \n${shareLink}`);
