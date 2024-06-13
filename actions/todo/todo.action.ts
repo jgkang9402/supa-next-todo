@@ -44,6 +44,7 @@ export const createTodo = async (content: string) => {
     .from("todos_with_rls")
     .insert([{ content }]) // content만 넣어주기
     .select(); // 결과값 반환
+  console.log("result", result);
   return result.data;
 };
 
@@ -55,6 +56,7 @@ export const updateTodo = async (id: number, content: string) => {
     .update({ content, updated_at: new Date().toISOString() }) // content만 수정
     .eq("id", id) // id가 일치하는 것만 수정
     .select(); // 결과값 반환
+  console.log("result", result);
   return result.data;
 };
 
