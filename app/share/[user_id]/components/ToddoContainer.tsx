@@ -15,7 +15,7 @@ const TodoContainer = ({ ownerUserId }: TodoContainerProps) => {
     onDeleteTodo,
     onSearchTodos,
     onUpdateTodo,
-  } = useTodosController({ ownerUserId });
+  } = useTodosController(ownerUserId);
 
   return (
     <div>
@@ -23,7 +23,7 @@ const TodoContainer = ({ ownerUserId }: TodoContainerProps) => {
         ownerUserId={ownerUserId}
         loading={loading}
         todoListData={todos}
-        isReadOnly={false}
+        isReadOnly
         onUpdate={onUpdateTodo}
         onCreate={onCreateEmptyTodo}
         onDelete={onDeleteTodo}

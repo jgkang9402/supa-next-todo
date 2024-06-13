@@ -1,14 +1,25 @@
-"use client";
-import Link from "next/link";
+import Image from "next/image";
+import { getUser } from "@/actions/auth/user.action";
+import { DotLoader } from "react-spinners";
 import TodoContainer from "./components/ToddoContainer";
 
-export default function Home() {
-  const testFunc = () => {
-    console.log("testFunc", process.env.NEXT_PUBLIC_CLIENT_URL);
-  };
+export default async function Home() {
+  const user = await getUser({ serverComponent: true });
+
   return (
-    <div>
-      <TodoContainer />
-    </div>
+    <main>
+      {user ? (
+        <TodoContainer ownerUserId={user?.id} />
+      ) : (
+        <>
+          <div className=" flex flex-col items-center mt-12">
+            <div>
+              <DotLoader />
+            </div>
+            <div className=" font-bold my-2">Please Login First</div>
+          </div>
+        </>
+      )}
+    </main>
   );
 }

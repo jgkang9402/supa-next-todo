@@ -4,6 +4,7 @@ import { IoShareSocialOutline } from "react-icons/io5";
 import { useCopyToClipboard } from "usehooks-ts";
 import { IoSearchOutline } from "react-icons/io5";
 import TodoListItem from "./TodoListItem";
+import TodoListItemReadonly from "./TodoListItemReadOnly";
 
 const TodoList = ({
   sharedUserFullName = "",
@@ -20,7 +21,7 @@ const TodoList = ({
   const [copiedText, copy] = useCopyToClipboard();
 
   const handleCopy = () => {
-    const shareLink = `${"todoList공유할 링크"}/share/${ownerUserId}`;
+    const shareLink = `${process.env.NEXT_PUBLIC_AUTH_REDIRECT_TO_HOME}/share/${ownerUserId}`;
     copy(shareLink)
       .then(() => {
         window.alert(`공유링크 복사완료! \n${shareLink}`);
@@ -99,6 +100,9 @@ const TodoList = ({
         {todoListData?.length >= 1 ? (
           <ul className="flex flex-col gap-6">
             {(todoListData ?? []).map((todo) => {
+              if (isReadOnly) {
+                return <TodoListItemReadonly key={todo?.id} todo={todo} />;
+              }
               return (
                 <TodoListItem
                   key={todo?.id}
